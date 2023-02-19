@@ -57,10 +57,8 @@ public class ServiceApp {
     }
 
     public void getInfAllCompany() {
-        resultList = REPOSITORY_APP.getInfoManufacturer(souvenirList);
-        for (Souvenir elem : resultList) {
-            LOG.info(elem);
-        }
+        Map<String, List<String>> map = REPOSITORY_APP.getMapManufacture(souvenirList);
+        map.entrySet().forEach(LOG::info);
     }
 
     public void getCompanyByYearAndSouvenir() {

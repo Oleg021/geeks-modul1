@@ -56,4 +56,17 @@ public class Souvenir extends Manufacturer {
                 ", price=" + price +
                 '}';
     }
+
+    public String infoCompany() {
+        return "Company Country: " + super.getManufacturerCountry() +
+                ", Company Name: " + super.getManufacturerName() + " ";
+    }
+
+    public String infoSouvenir() {
+        return "Souvenir: " + name +
+                ", day: " + day +
+                ", month: " + month +
+                ", year: " + year +
+                ", price: " + price;
+    }
 }

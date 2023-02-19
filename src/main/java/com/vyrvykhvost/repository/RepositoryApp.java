@@ -1,10 +1,9 @@
 package com.vyrvykhvost.repository;
 
+import com.vyrvykhvost.model.Manufacturer;
 import com.vyrvykhvost.model.Souvenir;
 
-import java.util.Comparator;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class RepositoryApp {
@@ -27,10 +26,16 @@ public class RepositoryApp {
                 .collect(Collectors.toList());
     }
 
-    public List<Souvenir> getInfoManufacturer(List<Souvenir> souvenirs) {
+
+    //todo
+    public Map<String, List<String>> getMapManufacture(List<Souvenir> souvenirs) {
         return souvenirs.stream()
-                .sorted(Comparator.comparing(Souvenir::getManufacturerName))
-                .collect(Collectors.toList());
+                .collect(
+                        Collectors.groupingBy(
+                                Souvenir::infoCompany,
+                                Collectors.mapping(Souvenir::infoSouvenir, Collectors.toList())
+                        )
+                );
     }
 
     public List<Souvenir> getSouvenirByYear(List<Souvenir> souvenirs, int year, String nameSouvenir) {
